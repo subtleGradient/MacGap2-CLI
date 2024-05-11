@@ -27,11 +27,15 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   NSURL *url = nil;
 
-  // Check for a URL in the command line arguments
+  // Parse command line arguments
   NSArray *args = [[NSProcessInfo processInfo] arguments];
-  if ([args count] > 1) {
-    NSString *urlString = args[1];
+  for (int i = 1; i < [args count]; i++) {
+    NSString *arg = args[i];
+    if ([arg isEqualToString:@"--url"] && i + 1 < [args count]) {
+      NSString *urlString = args[i + 1];
     url = [NSURL URLWithString:urlString];
+      i++; // Skip the next argument (URL value)
+    }
   }
 
   // Use the URL from the command line or the default URL
