@@ -3,6 +3,7 @@
 //  MG
 //
 //  Created by Tim Debo on 5/19/14.
+//  Updated by Thomas Aylott on 2024-05-11.
 //
 //
 
@@ -24,7 +25,23 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-  self.windowController = [[WindowController alloc] initWithURL:kStartPage];
+  NSURL *url = nil;
+
+  // Check for a URL in the command line arguments
+  NSArray *args = [[NSProcessInfo processInfo] arguments];
+  if ([args count] > 1) {
+    NSString *urlString = args[1];
+    url = [NSURL URLWithString:urlString];
+  }
+
+  // Use the URL from the command line or the default URL
+  if (url) {
+    self.windowController =
+        [[WindowController alloc] initWithURL:[url absoluteString]];
+  } else {
+    self.windowController = [[WindowController alloc] initWithURL:kStartPage];
+  }
+
   [self.windowController setWindowParams];
   [self.windowController showWindow:self];
   [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
