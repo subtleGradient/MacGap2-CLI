@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
-	<string>MG</string>
+	<string>MG.sh</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.MG.cli</string>
 	<key>CFBundleInfoDictionaryVersion</key>
