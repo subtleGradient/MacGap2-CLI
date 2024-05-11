@@ -2,3 +2,4 @@ public/status.png
 .DS_Store
 **/xcuserdata
 **/node_modules
+Built/*.app.log
