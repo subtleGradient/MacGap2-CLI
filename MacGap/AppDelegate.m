@@ -26,6 +26,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   NSURL *url = nil;
+  NSString *appName = nil;
 
   // Parse command line arguments
   NSArray *args = [[NSProcessInfo processInfo] arguments];
@@ -33,8 +34,11 @@
     NSString *arg = args[i];
     if ([arg isEqualToString:@"--url"] && i + 1 < [args count]) {
       NSString *urlString = args[i + 1];
-    url = [NSURL URLWithString:urlString];
+      url = [NSURL URLWithString:urlString];
       i++; // Skip the next argument (URL value)
+    } else if ([arg isEqualToString:@"--appName"] && i + 1 < [args count]) {
+      appName = args[i + 1];
+      i++; // Skip the next argument (appName value)
     }
   }
 
@@ -44,6 +48,11 @@
         [[WindowController alloc] initWithURL:[url absoluteString]];
   } else {
     self.windowController = [[WindowController alloc] initWithURL:kStartPage];
+  }
+
+  // Set app name if provided
+  if (appName) {
+    self.windowController.window.title = appName;
   }
 
   [self.windowController setWindowParams];
