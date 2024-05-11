@@ -1,0 +1,14 @@
+{
+  "name": "macgap2-cli",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "ai:dev": "combine_files_to_markdown.ts MacGap/** ai/** | pbcopy; echo 'copied all the code to the clipboard; Go ahead and paste it into some AI tool or whatevz'"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
