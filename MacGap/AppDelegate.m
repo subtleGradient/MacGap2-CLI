@@ -11,29 +11,27 @@
 
 @implementation AppDelegate
 
-- (void)applicationWillFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
+- (void)applicationWillFinishLaunching:(NSNotification *)aNotification {
+  // Insert code here to initialize your application
 }
 
--(BOOL)applicationShouldHandleReopen:(NSApplication*)application
-                   hasVisibleWindows:(BOOL)visibleWindows{
-    if(!visibleWindows){
-        [self.windowController.window makeKeyAndOrderFront: nil];
-    }
-    return YES;
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)application
+                    hasVisibleWindows:(BOOL)visibleWindows {
+  if (!visibleWindows) {
+    [self.windowController.window makeKeyAndOrderFront:nil];
+  }
+  return YES;
 }
 
-- (void) applicationDidFinishLaunching:(NSNotification *)aNotification {
-    self.windowController = [[WindowController alloc] initWithURL: kStartPage];
-    [self.windowController setWindowParams];
-    [self.windowController showWindow:self];
-    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+  self.windowController = [[WindowController alloc] initWithURL:kStartPage];
+  [self.windowController setWindowParams];
+  [self.windowController showWindow:self];
+  [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }
 
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
-     shouldPresentNotification:(NSUserNotification *)notification
-{
-    return YES;
+     shouldPresentNotification:(NSUserNotification *)notification {
+  return YES;
 }
 @end
