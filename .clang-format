@@ -1,0 +1,5 @@
+# ColumnLimit: 0 -- DISABLED because this breaks base64DecodeLookup wrapping
+
+BasedOnStyle: LLVM
+Language: ObjC
+# TODO: change this to match the style of the original project
