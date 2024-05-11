@@ -1,3 +1,4 @@
 public/status.png
 .DS_Store
-**/UserInterfaceState.xcuserstate
+**/xcuserdata
+**/node_modules
